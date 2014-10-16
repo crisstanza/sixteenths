@@ -1,25 +1,14 @@
 function Testable () {
 }
 
-Testable.prototype.testOne = function() {
-	var expected = 1;
-	var current = 1;
+Testable.prototype.testValidRandom = function() {
 	{
-		JSUS.assertEquals(expected, current);
+		var expected = 1;
 	}
-};
-
-Testable.prototype.testTwo = function() {
-	var expected = null;
-	var current = null;
 	{
-		JSUS.assertEquals(expected, current);
+		var generator = new SixteenthsGenerator();
+		var current = generator.random();
 	}
-};
-
-Testable.prototype.testThree = function() {
-	var expected = 1;
-	var current = 2;
 	{
 		JSUS.assertEquals(expected, current);
 	}
