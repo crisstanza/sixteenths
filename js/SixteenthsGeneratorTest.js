@@ -43,8 +43,7 @@ SixteenthsGeneratorTest.prototype.testBinary_2 = function() {
 	}
 };
 
-
-SixteenthsGeneratorTest.prototype.testValidBinary = function() {
+SixteenthsGeneratorTest.prototype.testPadLeft = function() {
 	{
 		var expected = '0000000000000001';
 		var currentDecimal = 1;
@@ -56,5 +55,20 @@ SixteenthsGeneratorTest.prototype.testValidBinary = function() {
 	}
 	{
 		JSUS.assertEquals(expected, current);
+	}
+};
+
+SixteenthsGeneratorTest.prototype.testIdealBinary = function() {
+	{
+		var expectedMinExc = 8;
+		var expectedMaxExc = 12;
+	}
+	{
+		var generator = new SixteenthsGenerator();
+		var tmp = generator.idealBinary();
+		var current = generator.countOnes(tmp);
+	}
+	{
+		JSUS.assertBetween(expectedMinExc, expectedMaxExc, current);
 	}
 };
