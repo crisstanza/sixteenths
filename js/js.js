@@ -1,9 +1,10 @@
 (function() {
 
 	function init() {
-		var jsus = new JSUS(SixteenthsGeneratorTest);
-		jsus.start();
-		jsus.end();
+		var generator = new SixteenthsGenerator();
+		var tab = generator.tab();
+		var beat = document.getElementById('beat');
+		beat.innerHTML = '| ' + tab + ' |';
 	}
 
 	window.addEventListener('load', init, false);

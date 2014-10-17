@@ -1,14 +1,20 @@
 function SixteenthsGenerator() {
 }
 
-SixteenthsGenerator.COUNT_1_MIN_EXC = 8;
-SixteenthsGenerator.COUNT_1_MAX_EXC = 12;
+SixteenthsGenerator.COUNT_1_MIN = 6;
+SixteenthsGenerator.COUNT_1_MAX = 10;
+
+SixteenthsGenerator.prototype.tab = function() {
+	var binaryNumber = this.idealBinary();
+	var binaryNumberPadded = this.padLeft(binaryNumber);
+	return this.tabFormat(binaryNumberPadded);
+};
 
 SixteenthsGenerator.prototype.idealBinary = function() {
 	var randomNumber = this.random();
 	var binaryNumber = this.binary(randomNumber);
 	var count = this.countOnes(binaryNumber);
-	while (count <= SixteenthsGenerator.COUNT_1_MIN_EXC || count >= SixteenthsGenerator.COUNT_1_MAX_EXC) {
+	while (count < SixteenthsGenerator.COUNT_1_MIN || count > SixteenthsGenerator.COUNT_1_MAX) {
 		randomNumber = this.random();
 		binaryNumber = this.binary(randomNumber);
 		count = this.countOnes(binaryNumber);
@@ -16,12 +22,19 @@ SixteenthsGenerator.prototype.idealBinary = function() {
 	return binaryNumber;
 };
 
+SixteenthsGenerator.prototype.tabFormat = function(str) {
+	str = str.replace(/0/g, '.');
+	str = str.replace(/1/g, 'x');
+	str = str.split('').join(' ');
+	return str;
+};
+
 SixteenthsGenerator.prototype.random = function() {
 	return Math.ceil(Math.random()*(65536-1) + 0);
 };
 
 SixteenthsGenerator.prototype.countOnes = function(n) {
-	return n.match(/1/g).length;
+	return (new String(n).match(/1/g)).length;
 };
 
 SixteenthsGenerator.prototype.binary = function(n) {
