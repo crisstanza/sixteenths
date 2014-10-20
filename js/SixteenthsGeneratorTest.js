@@ -91,6 +91,19 @@
 		}
 	};
 
+	SixteenthsGeneratorTest.prototype.testEmptyTab = function() {
+		{
+			var expected = '. . . . . . . . . . . . . . . .';
+		}
+		{
+			var generator = new SixteenthsGenerator();
+			var current = generator.emptyTab();
+		}
+		{
+			JSUS.assertEquals(expected, current);
+		}
+	};
+
 	function init() {
 		var jsus = new JSUS(SixteenthsGeneratorTest);
 		jsus.start();

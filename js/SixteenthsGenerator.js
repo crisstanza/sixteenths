@@ -4,6 +4,13 @@ function SixteenthsGenerator() {
 SixteenthsGenerator.COUNT_1_MIN = 6;
 SixteenthsGenerator.COUNT_1_MAX = 10;
 
+SixteenthsGenerator.prototype.emptyTab = function() {
+	var emptyTabNumber = 0;
+	var binaryNumber = this.binary(emptyTabNumber);
+	var binaryNumberPadded = this.padLeft(binaryNumber);
+	return this.tabFormat(binaryNumberPadded);
+};
+
 SixteenthsGenerator.prototype.tab = function() {
 	var binaryNumber = this.idealBinary();
 	var binaryNumberPadded = this.padLeft(binaryNumber);
